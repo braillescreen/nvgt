@@ -25,6 +25,7 @@ jobs:
         ./build_macos.sh ci
     - name: Run case tests
       run: |
+        set -e
         chmod +x release/nvgt
         cd test
         ../release/nvgt -- tests.nvgt
@@ -47,6 +48,7 @@ jobs:
         ./build/build_linux.sh ci
     - name: Run case tests
       run: |
+        set -e
         chmod +x release/nvgt
         cd test
         ../release/nvgt -- tests.nvgt
@@ -116,7 +118,7 @@ jobs:
     - name: Run case tests
       run: |
         cd test
-        ../release/nvgt -- tests.nvgt
+        ..\release\nvgt.exe -- tests.nvgt
         cd ..
     - uses: actions/upload-artifact@v4
       with:
