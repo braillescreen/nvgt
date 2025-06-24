@@ -23,6 +23,12 @@ jobs:
         cp build/build_macos.sh .
         sudo chmod +x build_macos.sh
         ./build_macos.sh ci
+    - name: Run case tests
+      run: |
+        chmod +x release/nvgt
+        cd test
+        ../release/nvgt -- tests.nvgt
+        cd ..
     - uses: actions/upload-artifact@v4
       with:
         name: mac_release
@@ -39,6 +45,12 @@ jobs:
         pip3 install scons
         sudo chmod +x build/build_linux.sh
         ./build/build_linux.sh ci
+    - name: Run case tests
+      run: |
+        chmod +x release/nvgt
+        cd test
+        ../release/nvgt -- tests.nvgt
+        cd ..
     - uses: actions/upload-artifact@v4
       with:
         name: linux_release
@@ -101,6 +113,11 @@ jobs:
         curl -s -O https://nvgt.gg/windev.zip
         7z x windev.zip -owindev
         scons -s no_upx=0
+    - name: Run case tests
+      run: |
+        cd test
+        ../release/nvgt -- tests.nvgt
+        cd ..
     - uses: actions/upload-artifact@v4
       with:
         name: windows_release
