@@ -26,7 +26,6 @@ jobs:
         ./build_macos.sh ci
     - name: Run case tests
       run: |
-        set -e
         chmod +x release/nvgt
         cd test
         bash ../release/nvgt -- tests.nvgt
@@ -49,7 +48,6 @@ jobs:
         ./build/build_linux.sh ci
     - name: Run case tests
       run: |
-        set -e
         chmod +x release/nvgt
         cd test
         ../release/nvgt -- tests.nvgt
